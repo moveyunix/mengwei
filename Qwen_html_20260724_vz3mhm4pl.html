@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>孟伟 - 开源AI战略领袖 | 中兴通讯开源战略总监</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1e40af',
+                        secondary: '#3b82f6',
+                        accent: '#60a5fa',
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-bg {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #60a5fa 100%);
+        }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .timeline-line {
+            background: linear-gradient(to bottom, #3b82f6, #60a5fa, #93c5fd);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white/90 backdrop-blur-md shadow-lg z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="text-2xl font-bold text-primary">孟伟</div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-gray-700 hover:text-primary transition">首页</a>
+                    <a href="#philosophy" class="text-gray-700 hover:text-primary transition">理念</a>
+                    <a href="#insight" class="text-gray-700 hover:text-primary transition">洞察</a>
+                    <a href="#projects" class="text-gray-700 hover:text-primary transition">项目</a>
+                    <a href="#journey" class="text-gray-700 hover:text-primary transition">历程</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="gradient-bg min-h-screen flex items-center justify-center relative overflow-hidden pt-16">
+        <!-- Animated Background -->
+        <div class="absolute inset-0 opacity-20">
+            <div class="absolute top-20 left-10 w-72 h-72 bg-white rounded-full mix-blend-overlay filter blur-xl animate-pulse-slow"></div>
+            <div class="absolute top-40 right-10 w-96 h-96 bg-blue-300 rounded-full mix-blend-overlay filter blur-xl animate-pulse-slow" style="animation-delay: 1s"></div>
+            <div class="absolute bottom-20 left-1/2 w-80 h-80 bg-blue-400 rounded-full mix-blend-overlay filter blur-xl animate-pulse-slow" style="animation-delay: 2s"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <!-- Profile Info -->
+                <div class="text-white space-y-6">
+                    <div class="space-y-2">
+                        <h1 class="text-5xl md:text-6xl font-bold">孟伟</h1>
+                        <p class="text-2xl text-blue-200">开源AI战略领袖 & 国际标准制定者</p>
+                    </div>
+                    
+                    <div class="flex flex-wrap gap-3">
+                        <span class="px-4 py-2 bg-white/20 backdrop-blur-md rounded-full text-sm font-medium">中兴通讯开源战略总监</span>
+                        <span class="px-4 py-2 bg-white/20 backdrop-blur-md rounded-full text-sm font-medium">LF AI & Data 前董事会主席</span>
+                        <span class="px-4 py-2 bg-white/20 backdrop-blur-md rounded-full text-sm font-medium">OAAIF 秘书长</span>
+                        <span class="px-4 py-2 bg-white/20 backdrop-blur-md rounded-full text-sm font-medium">ITU 副主席</span>
+                    </div>
+
+                    <p class="text-lg text-blue-100 leading-relaxed">
+                        从底层软件工程师到全球开源基金会领导者，我致力于推动AI与网络融合，
+                        构建开放、普惠的人工智能新生态。主导多项国际标准制定，
+                        协调全球顶级科技企业，推动开源AI技术创新与产业落地。
+                    </p>
+
+                    <div class="flex gap-4 pt-4">
+                        <button onclick="scrollToSection('philosophy')" class="px-8 py-3 bg-white text-primary rounded-full font-semibold hover:bg-blue-50 transition shadow-lg">
+                            了解更多
+                        </button>
+                        <button onclick="toggleDigitalTwin()" class="px-8 py-3 glass-effect text-white rounded-full font-semibold hover:bg-white/20 transition flex items-center gap-2">
+                            <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+                            数字分身对话
+                        </button>
+                    </div>
+
+                    <div class="flex gap-6 pt-6">
+                        <a href="mailto:moveyunix@gmail.com" class="text-blue-200 hover:text-white transition">
+                            <i class="fas fa-envelope text-2xl"></i>
+                        </a>
+                        <a href="tel:13584013108" class="text-blue-200 hover:text-white transition">
+                            <i class="fas fa-phone text-2xl"></i>
+                        </a>
+                        <a href="#" class="text-blue-200 hover:text-white transition">
+                            <i class="fab fa-linkedin text-2xl"></i>
+                        </a>
+                        <a href="#" class="text-blue-200 hover:text-white transition">
+                            <i class="fab fa-github text-2xl"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Profile Image -->
+                <div class="flex justify-center animate-float">
+                    <div class="relative">
+                        <div class="absolute inset-0 bg-white/30 rounded-full blur-2xl"></div>
+                        <img src="您的照片.jpg" alt="孟伟" class="relative w-80 h-80 md:w-96 md:h-96 object-cover rounded-full border-8 border-white/50 shadow-2xl">
+                        
+                        <!-- Floating Badges -->
+                        <div class="absolute -top-4 -right-4 bg-white text-primary px-4 py-2 rounded-full shadow-lg font-semibold">
+                            <i class="fas fa-award mr-2"></i>中国开源优秀人物
+                        </div>
+                        <div class="absolute -bottom-4 -left-4 bg-white text-primary px-4 py-2 rounded-full shadow-lg font-semibold">
+                            <i class="fas fa-globe mr-2"></i>全球开源领袖
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <i class="fas fa-chevron-down text-white text-2xl"></i>
+        </div>
+    </section>
+
+    <!-- Philosophy Section -->
+    <section id="philosophy" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">My Philosophy</h2>
+                <p class="text-xl text-gray-600">我的价值主张</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="p-8 bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl shadow-lg hover:shadow-2xl transition transform hover:-translate-y-2">
+                    <div class="w-16 h-16 bg-primary rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-network-wired text-white text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">开源驱动创新</h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        坚信开源是技术创新的最佳路径。通过开放协作，汇聚全球智慧，
+                        推动AI技术从封闭走向开放，从单一企业走向产业生态。
+                    </p>
+                </div>
+
+                <div class="p-8 bg-gradient-to-br from-purple-50 to-purple-100 rounded-2xl shadow-lg hover:shadow-2xl transition transform hover:-translate-y-2">
+                    <div class="w-16 h-16 bg-purple-600 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-handshake text-white text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">标准引领发展</h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        参与制定IETF、ITU等国际标准，为AI与网络融合建立统一框架。
+                        以标准促进互操作性，降低产业门槛，加速技术普及。
+                    </p>
+                </div>
+
+                <div class="p-8 bg-gradient-to-br from-green-50 to-green-100 rounded-2xl shadow-lg hover:shadow-2xl transition transform hover:-translate-y-2">
+                    <div class="w-16 h-16 bg-green-600 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-rocket text-white text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">生态赋能产业</h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        构建开放智算产业联盟与OAAIF基金会，链接产学研用各方，
+                        推动AI技术从实验室走向产业应用，创造真实商业价值。
+                    </p>
+                </div>
+            </div>
+
+            <div class="mt-16 text-center">
+                <blockquote class="text-3xl md:text-4xl font-light text-gray-700 italic">
+                    "从<span class="text-primary font-semibold">造设备</span>走向<span class="text-primary font-semibold">定标准</span>，<br>
+                    从<span class="text-primary font-semibold">领开源</span>走向<span class="text-primary font-semibold">创生态</span>"
+                </blockquote>
+            </div>
+        </div>
+    </section>
+
+    <!-- Insight Section -->
+    <section id="insight" class="py-24 bg-gray-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">Insight</h2>
+                <p class="text-xl text-gray-400">能力洞察与AI趋势理解</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12">
+                <!-- Core Competencies -->
+                <div class="space-y-8">
+                    <h3 class="text-3xl font-bold text-blue-400">核心能力</h3>
+                    
+                    <div class="space-y-6">
+                        <div class="bg-gray-800 p-6 rounded-xl">
+                            <h4 class="text-xl font-semibold mb-2">全栈技术理解</h4>
+                            <p class="text-gray-400">从嵌入式PLC研发到运营商级IP网络，从底层协议栈到AI大模型，具备跨领域技术整合能力</p>
+                        </div>
+
+                        <div class="bg-gray-800 p-6 rounded-xl">
+                            <h4 class="text-xl font-semibold mb-2">国际标准话语权</h4>
+                            <p class="text-gray-400">主导IETF RFC 9516、ITU Y.3172、M.3384等国际标准，拥有AI与网络融合领域标准定义权</p>
+                        </div>
+
+                        <div class="bg-gray-800 p-6 rounded-xl">
+                            <h4 class="text-xl font-semibold mb-2">开源生态领导力</h4>
+                            <p class="text-gray-400">连续两年担任Linux基金会AI & Data董事会主席，协调AWS、微软、华为等全球顶级科技企业</p>
+                        </div>
+
+                        <div class="bg-gray-800 p-6 rounded-xl">
+                            <h4 class="text-xl font-semibold mb-2">产业联盟构建力</h4>
+                            <p class="text-gray-400">发起成立开放智算产业联盟（50+成员）与OAAIF基金会（20+成员），推动产业规模化落地</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AI Trends -->
+                <div class="space-y-8">
+                    <h3 class="text-3xl font-bold text-blue-400">AI趋势洞察</h3>
+                    
+                    <div class="space-y-6">
+                        <div class="border-l-4 border-blue-500 pl-6">
+                            <h4 class="text-xl font-semibold mb-2">开源大模型成为主流</h4>
+                            <p class="text-gray-400">LF AI & Data基金会项目从不足10个发展到70余个，开发者突破10万，开源AI生态蓬勃发展[[15]]</p>
+                        </div>
+
+                        <div class="border-l-4 border-purple-500 pl-6">
+                            <h4 class="text-xl font-semibold mb-2">Agentic AI智能体时代来临</h4>
+                            <p class="text-gray-400">发布智能体工厂Co-Sight 2.0，降低AI智能体开发门槛，推动个性化AI Agent快速定制与规模化部署[[6]]</p>
+                        </div>
+
+                        <div class="border-l-4 border-green-500 pl-6">
+                            <h4 class="text-xl font-semibold mb-2">AI与网络深度融合</h4>
+                            <p class="text-gray-400">ITU Y.3172定义机器学习在5G及未来网络的架构框架，M.3384建立AI增强电信运营管理的智能分级体系</p>
+                        </div>
+
+                        <div class="border-l-4 border-yellow-500 pl-6">
+                            <h4 class="text-xl font-semibold mb-2">商业化落地需价值验证</h4>
+                            <p class="text-gray-400">大模型开源与商业化仍处模糊地带，需要进行商业价值验证与可行性评估[[10]]</p>
+                        </div>
+
+                        <div class="border-l-4 border-red-500 pl-6">
+                            <h4 class="text-xl font-semibold mb-2">全球化开源治理</h4>
+                            <p class="text-gray-400">OAAIF确立欧洲（日内瓦）、中国双总部，中东、东盟、北美三大区域中心的全球化布局[[24]]</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-24 bg-blue-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Projects</h2>
+                <p class="text-xl text-gray-600">亮点项目介绍</p>
+            </div>
+
+            <div class="space-y-12">
+                <!-- International Standards -->
+                <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
+                    <div class="bg-gradient-to-r from-primary to-secondary p-6">
+                        <h3 class="text-2xl font-bold text-white flex items-center">
+                            <i class="fas fa-book mr-3"></i>国际标准制定
+                        </h3>
+                    </div>
+                    <div class="p-8 grid md:grid-cols-3 gap-6">
+                        <div class="space-y-3">
+                            <h4 class="font-bold text-lg text-primary">IETF RFC 9516</h4>
+                            <p class="text-sm text-gray-600">服务功能链主动OAM标准</p>
+                            <p class="text-gray-700 text-sm">定义基于NSH封装的OAM报文格式、缺陷检测与定位机制，与Cisco、华为、中国移动等合作完成</p>
+                        </div>
+                        <div class="space-y-3">
+                            <h4 class="font-bold text-lg text-primary">ITU Y.3172</h4>
+                            <p class="text-sm text-gray-600">未来网络机器学习架构框架</p>
+                            <p class="text-gray-700 text-sm">首个面向机器学习在网络中应用的ITU标准，定义ML管道、编排器、沙箱三大核心组件</p>
+                        </div>
+                        <div class="space-y-3">
+                            <h4 class="font-bold text-lg text-primary">ITU M.3384</h4>
+                            <p class="text-sm text-gray-600">AI增强电信运营管理智能分级</p>
+                            <p class="text-gray-700 text-sm">定义六级智能分级体系与五维评估框架，为运营商智能化演进提供科学指南</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Open Source Projects -->
+                <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
+                    <div class="bg-gradient-to-r from-purple-600 to-purple-800 p-6">
+                        <h3 class="text-2xl font-bold text-white flex items-center">
+                            <i class="fas fa-code-branch mr-3"></i>开源项目领导
+                        </h3>
+                    </div>
+                    <div class="p-8 grid md:grid-cols-2 gap-6">
+                        <div class="space-y-3">
+                            <h4 class="font-bold text-lg text-purple-600">OpenDaylight OF-CONFIG (PTL)</h4>
+                            <p class="text-gray-700">主导OpenFlow配置协议项目，基于NETCONF实现对OpenFlow数据通路的远程配置与管理，推动SDN控制器标准化</p>
+                        </div>
+                        <div class="space-y-3">
+                            <h4 class="font-bold text-lg text-purple-600">Adlik (Mentor)</h4>
+                            <p class="text-gray-700">深度学习模型推理加速工具包，支持TensorFlow、PyTorch、PaddlePaddle等多框架模型转换与优化</p>
+                        </div>
+                        <div class="space-y-3">
+                            <h4 class="font-bold text-lg text-purple-600">Co-Sight 智能体工厂 (Mentor)</h4>
+                            <p class="text-gray-700">提供高效灵活的AI Agent开发框架，解决快速定制个性化AI Agent的产业关键问题，发布2.0版本[[6]]</p>
+                        </div>
+                        <div class="space-y-3">
+                            <h4 class="font-bold text-lg text-purple-600">Linux基金会 AI & Data (董事会主席)</h4>
+                            <p class="text-gray-700">2023-2024连续两年担任主席，推动基金会成员从55增长至77个，项目从不足10个发展到70余个[[1]]</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Industry Alliances -->
+                <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
+                    <div class="bg-gradient-to-r from-green-600 to-green-800 p-6">
+                        <h3 class="text-2xl font-bold text-white flex items-center">
+                            <i class="fas fa-users mr-3"></i>产业生态构建
+                        </h3>
+                    </div>
+                    <div class="p-8 grid md:grid-cols-2 gap-6">
+                        <div class="space-y-3">
+                            <h4 class="font-bold text-lg text-green-600">开放智算产业联盟 COIA (秘书长)</h4>
+                            <p class="text-gray-700">2024年联合50余家企事业单位成立，以开源为抓手推进开放、包容、普惠的人工智能新生态[[16]]</p>
+                        </div>
+                        <div class="space-y-3">
+                            <h4 class="font-bold text-lg text-green-600">开放代理式AI基金会 OAAIF (秘书长)</h4>
+                            <p class="text-gray-700">2026年联合20余家单位创立，确立欧洲（日内瓦）、中国双总部及三大区域中心全球化布局[[24]]</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Technical Projects -->
+                <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
+                    <div class="bg-gradient-to-r from-orange-600 to-orange-800 p-6">
+                        <h3 class="text-2xl font-bold text-white flex items-center">
+                            <i class="fas fa-microchip mr-3"></i>核心技术研发
+                        </h3>
+                    </div>
+                    <div class="p-8 grid md:grid-cols-2 gap-6">
+                        <div class="space-y-3">
+                            <h4 class="font-bold text-lg text-orange-600">路由器仿真平台 (ROS)</h4>
+                            <p class="text-gray-700">主导架构设计，将物理路由器完整功能移植至x86环境，为研发测试提供敏捷沙盒环境</p>
+                        </div>
+                        <div class="space-y-3">
+                            <h4 class="font-bold text-lg text-orange-600">CGN电信级NAT (项目经理)</h4>
+                            <p class="text-gray-700">实现NAT44/NAT64/DS-Lite三大核心技术体系，为法国电信等运营商IPv6演进提供设备级支撑</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Journey Section -->
+    <section id="journey" class="py-24 bg-white">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Journey</h2>
+                <p class="text-xl text-gray-600">职业历程</p>
+            </div>
+
+            <div class="relative">
+                <!-- Timeline Line -->
+                <div class="absolute left-1/2 transform -translate-x-1/2 w-1 h-full timeline-line rounded-full"></div>
+
+                <!-- Timeline Items -->
+                <div class="space-y-12">
+                    <!-- 2026 -->
+                    <div class="relative">
+                        <div class="flex items-center justify-end md:justify-end md:pr-12 mb-4 md:mb-0 md:w-1/2 md:ml-auto">
+                            <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-blue-500 md:text-right">
+                                <span class="text-sm text-blue-600 font-semibold">2026</span>
+                                <h3 class="text-xl font-bold text-gray-900 mt-2">OAAIF秘书长</h3>
+                                <p class="text-gray-600 mt-2">联合20余家单位创立开放代理式人工智能基金会，获推举担任首任秘书长</p>
+                                <div class="mt-3 flex flex-wrap gap-2 md:justify-end">
+                                    <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs">全球化布局</span>
+                                    <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs">双总部</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-blue-500 rounded-full border-4 border-white shadow"></div>
+                    </div>
+
+                    <!-- 2024 -->
+                    <div class="relative">
+                        <div class="flex items-center justify-start md:justify-end md:pl-12 mb-4 md:mb-0 md:w-1/2">
+                            <div class="bg-white p-6 rounded-xl shadow-lg border-r-4 border-purple-500 md:text-right">
+                                <span class="text-sm text-purple-600 font-semibold">2024</span>
+                                <h3 class="text-xl font-bold text-gray-900 mt-2">COIA秘书长</h3>
+                                <p class="text-gray-600 mt-2">联合50余家企事业单位成立开放智算产业联盟，担任联盟秘书长</p>
+                            </div>
+                        </div>
+                        <div class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-purple-500 rounded-full border-4 border-white shadow"></div>
+                    </div>
+
+                    <!-- 2023-2024 -->
+                    <div class="relative">
+                        <div class="flex items-center justify-end md:justify-end md:pr-12 mb-4 md:mb-0 md:w-1/2 md:ml-auto">
+                            <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-green-500 md:text-right">
+                                <span class="text-sm text-green-600 font-semibold">2023-2024</span>
+                                <h3 class="text-xl font-bold text-gray-900 mt-2">LF AI & Data 董事会主席</h3>
+                                <p class="text-gray-600 mt-2">连续两年担任Linux基金会AI & Data董事会主席，协调全球顶级科技企业</p>
+                                <div class="mt-3 flex flex-wrap gap-2 md:justify-end">
+                                    <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs">成员55→77</span>
+                                    <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs">项目10→70+</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-green-500 rounded-full border-4 border-white shadow"></div>
+                    </div>
+
+                    <!-- 2022-2023 -->
+                    <div class="relative">
+                        <div class="flex items-center justify-start md:justify-end md:pl-12 mb-4 md:mb-0 md:w-1/2">
+                            <div class="bg-white p-6 rounded-xl shadow-lg border-r-4 border-yellow-500 md:text-right">
+                                <span class="text-sm text-yellow-600 font-semibold">2022-2023</span>
+                                <h3 class="text-xl font-bold text-gray-900 mt-2">ITU M.3384标准</h3>
+                                <p class="text-gray-600 mt-2">深度参与ITU-T M.3384标准制定，定义AI增强电信运营管理智能分级体系</p>
+                            </div>
+                        </div>
+                        <div class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-yellow-500 rounded-full border-4 border-white shadow"></div>
+                    </div>
+
+                    <!-- 2018-2019 -->
+                    <div class="relative">
+                        <div class="flex items-center justify-end md:justify-end md:pr-12 mb-4 md:mb-0 md:w-1/2 md:ml-auto">
+                            <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-red-500 md:text-right">
+                                <span class="text-sm text-red-600 font-semibold">2018-2019</span>
+                                <h3 class="text-xl font-bold text-gray-900 mt-2">ITU Y.3172标准</h3>
+                                <p class="text-gray-600 mt-2">参与ITU-T Y.3172标准制定，为机器学习在5G及未来网络应用提供架构框架</p>
+                            </div>
+                        </div>
+                        <div class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-red-500 rounded-full border-4 border-white shadow"></div>
+                    </div>
+
+                    <!-- 2015 -->
+                    <div class="relative">
+                        <div class="flex items-center justify-start md:justify-end md:pl-12 mb-4 md:mb-0 md:w-1/2">
+                            <div class="bg-white p-6 rounded-xl shadow-lg border-r-4 border-indigo-500 md:text-right">
+                                <span class="text-sm text-indigo-600 font-semibold">2015</span>
+                                <h3 class="text-xl font-bold text-gray-900 mt-2">OpenDaylight PTL</h3>
+                                <p class="text-gray-600 mt-2">担任OpenDaylight OF-CONFIG项目团队负责人，推动SDN控制器标准化</p>
+                            </div>
+                        </div>
+                        <div class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-indigo-500 rounded-full border-4 border-white shadow"></div>
+                    </div>
+
+                    <!-- 2014-2015 -->
+                    <div class="relative">
+                        <div class="flex items-center justify-end md:justify-end md:pr-12 mb-4 md:mb-0 md:w-1/2 md:ml-auto">
+                            <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-pink-500 md:text-right">
+                                <span class="text-sm text-pink-600 font-semibold">2014-2015</span>
+                                <h3 class="text-xl font-bold text-gray-900 mt-2">IETF RFC 9516</h3>
+                                <p class="text-gray-600 mt-2">作为IETF SFC工作组核心贡献者，主导服务功能链主动OAM标准制定</p>
+                            </div>
+                        </div>
+                        <div class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-pink-500 rounded-full border-4 border-white shadow"></div>
+                    </div>
+
+                    <!-- 2012 -->
+                    <div class="relative">
+                        <div class="flex items-center justify-start md:justify-end md:pl-12 mb-4 md:mb-0 md:w-1/2">
+                            <div class="bg-white p-6 rounded-xl shadow-lg border-r-4 border-teal-500 md:text-right">
+                                <span class="text-sm text-teal-600 font-semibold">2012</span>
+                                <h3 class="text-xl font-bold text-gray-900 mt-2">开源战略总监</h3>
+                                <p class="text-gray-600 mt-2">调任中兴通讯总部，负责标准和开源研究与规划工作</p>
+                            </div>
+                        </div>
+                        <div class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-teal-500 rounded-full border-4 border-white shadow"></div>
+                    </div>
+
+                    <!-- 2006 -->
+                    <div class="relative">
+                        <div class="flex items-center justify-end md:justify-end md:pr-12 mb-4 md:mb-0 md:w-1/2 md:ml-auto">
+                            <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-cyan-500 md:text-right">
+                                <span class="text-sm text-cyan-600 font-semibold">2006</span>
+                                <h3 class="text-xl font-bold text-gray-900 mt-2">中兴通讯</h3>
+                                <p class="text-gray-600 mt-2">加入中兴通讯，历任研发经理、科长，管理24人研发团队</p>
+                            </div>
+                        </div>
+                        <div class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-cyan-500 rounded-full border-4 border-white shadow"></div>
+                    </div>
+
+                    <!-- 2003 -->
+                    <div class="relative">
+                        <div class="flex items-center justify-start md:justify-end md:pl-12 mb-4 md:mb-0 md:w-1/2">
+                            <div class="bg-white p-6 rounded-xl shadow-lg border-r-4 border-gray-500 md:text-right">
+                                <span class="text-sm text-gray-600 font-semibold">2003</span>
+                                <h3 class="text-xl font-bold text-gray-900 mt-2">国家电网自动化研究院</h3>
+                                <p class="text-gray-600 mt-2">软件开发工程师，负责PLC研发与电力通信调度系统开发</p>
+                            </div>
+                        </div>
+                        <div class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-gray-500 rounded-full border-4 border-white shadow"></div>
+                    </div>
+
+                    <!-- 1999-2003 -->
+                    <div class="relative">
+                        <div class="flex items-center justify-end md:justify-end md:pr-12 mb-4 md:mb-0 md:w-1/2 md:ml-auto">
+                            <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-blue-400 md:text-right">
+                                <span class="text-sm text-blue-400 font-semibold">1999-2003</span>
+                                <h3 class="text-xl font-bold text-gray-900 mt-2">武汉大学</h3>
+                                <p class="text-gray-600 mt-2">本科，工学学士</p>
+                            </div>
+                        </div>
+                        <div class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-blue-400 rounded-full border-4 border-white shadow"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">孟伟</h3>
+                    <p class="text-gray-400">开源AI战略领袖，致力于推动AI与网络融合，构建开放普惠的人工智能新生态</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">联系方式</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><i class="fas fa-envelope mr-2"></i>moveyunix@gmail.com</li>
+                        <li><i class="fas fa-phone mr-2"></i>13584013108</li>
+                        <li><i class="fas fa-map-marker-alt mr-2"></i>深圳</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">社交媒体</h4>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2026 孟伟。All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Digital Twin Modal -->
+    <div id="digitalTwinModal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[80vh] overflow-hidden">
+            <div class="bg-gradient-to-r from-primary to-secondary p-6 flex justify-between items-center">
+                <div class="flex items-center gap-3">
+                    <div class="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
+                    <h3 class="text-xl font-bold text-white">孟伟 - 数字分身</h3>
+                </div>
+                <button onclick="toggleDigitalTwin()" class="text-white hover:text-gray-200">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            <div class="p-6 h-[60vh] overflow-y-auto">
+                <div class="space-y-4">
+                    <div class="bg-blue-50 p-4 rounded-lg">
+                        <p class="text-gray-700">您好！我是孟伟的数字分身。我可以回答关于开源AI、国际标准、技术趋势等方面的问题。请问您想了解什么？</p>
+                    </div>
+                </div>
+                <div class="mt-4 flex gap-2">
+                    <input type="text" id="chatInput" placeholder="输入您的问题..." class="flex-1 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                    <button onclick="sendMessage()" class="px-6 py-2 bg-primary text-white rounded-lg hover:bg-blue-700 transition">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Smooth scroll
+        function scrollToSection(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Digital Twin Modal
+        function toggleDigitalTwin() {
+            const modal = document.getElementById('digitalTwinModal');
+            modal.classList.toggle('hidden');
+        }
+
+        // Send message
+        function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const message = input.value.trim();
+            if (message) {
+                // Here you would integrate with an AI service
+                alert('数字分身功能需要接入AI服务。当前演示版本，您可以集成OpenAI、通义千问等大模型API实现智能对话。');
+                input.value = '';
+            }
+        }
+
+        // Enter key to send
+        document.getElementById('chatInput')?.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards
+        document.querySelectorAll('.rounded-2xl, .rounded-xl').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
