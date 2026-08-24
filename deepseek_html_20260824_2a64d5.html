@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>孟伟 · 开源战略总监</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; color: #0b1a33; scroll-behavior: smooth; line-height: 1.6; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+        /* NAV */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255,255,255,0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0,0,0,0.04);
+            z-index: 999;
+            padding: 14px 0;
+            transition: box-shadow 0.2s;
+        }
+        nav .container { display: flex; justify-content: space-between; align-items: center; }
+        .nav-logo { font-weight: 700; font-size: 1.25rem; letter-spacing: -0.3px; color: #0b1a33; }
+        .nav-logo span { color: #2563eb; }
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            align-items: center;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #1e293b;
+            transition: color 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .nav-links a:hover { color: #2563eb; }
+        .nav-links a i { font-size: 0.85rem; opacity: 0.7; }
+        .nav-cta {
+            background: #0b1a33;
+            color: #fff !important;
+            padding: 6px 18px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: background 0.2s;
+        }
+        .nav-cta:hover { background: #2563eb !important; color: #fff !important; }
+
+        .lang-switch {
+            background: transparent;
+            border: 1.5px solid #cbd5e1;
+            border-radius: 40px;
+            padding: 4px 14px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            cursor: pointer;
+            color: #0b1a33;
+            transition: all 0.2s;
+            margin-left: 8px;
+            user-select: none;
+        }
+        .lang-switch:hover {
+            border-color: #2563eb;
+            color: #2563eb;
+            background: rgba(37,99,235,0.04);
+        }
+
+        /* HERO */
+        .hero { padding: 140px 0 80px; background: linear-gradient(145deg, #ffffff 0%, #f1f5f9 100%); border-bottom: 1px solid rgba(0,0,0,0.03); }
+        .hero-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 48px; align-items: center; }
+        .hero-avatar { display: flex; flex-direction: column; align-items: center; }
+        .avatar-frame { width: 220px; height: 220px; border-radius: 50%; overflow: hidden; border: 4px solid #fff; box-shadow: 0 20px 40px -12px rgba(0,0,0,0.2); background: #e2e8f0; display: flex; align-items: center; justify-content: center; }
+        .avatar-frame img { width: 100%; height: 100%; object-fit: cover; }
+        .hero-tags { margin-top: 20px; display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+        .hero-tags span { background: rgba(37,99,235,0.08); color: #1e40af; padding: 6px 18px; border-radius: 40px; font-size: 0.8rem; font-weight: 600; border: 1px solid rgba(37,99,235,0.12); }
+        .hero-content h1 { font-size: 3.2rem; font-weight: 800; letter-spacing: -1.5px; line-height: 1.1; margin-bottom: 8px; }
+        .hero-content h1 span { color: #2563eb; }
+        .hero-sub { font-size: 1.2rem; font-weight: 400; color: #475569; margin-bottom: 16px; letter-spacing: -0.2px; }
+        .hero-bio { font-size: 1.05rem; color: #334155; max-width: 560px; margin-bottom: 28px; line-height: 1.7; }
+        .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+        .btn-primary { background: #0b1a33; color: #fff; border: none; padding: 12px 32px; border-radius: 60px; font-weight: 600; font-size: 1rem; display: inline-flex; align-items: center; gap: 10px; cursor: pointer; transition: background 0.25s, transform 0.15s; text-decoration: none; }
+        .btn-primary:hover { background: #2563eb; transform: translateY(-2px); }
+        .btn-primary i { font-size: 1rem; }
+        .btn-outline { background: transparent; color: #0b1a33; border: 1.5px solid #cbd5e1; padding: 12px 28px; border-radius: 60px; font-weight: 500; font-size: 1rem; display: inline-flex; align-items: center; gap: 10px; cursor: pointer; transition: all 0.25s; text-decoration: none; }
+        .btn-outline:hover { border-color: #2563eb; color: #2563eb; background: rgba(37,99,235,0.04); }
+
+        /* SECTION */
+        section { padding: 80px 0; }
+        .section-label { display: inline-block; font-size: 0.8rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: #2563eb; background: rgba(37,99,235,0.08); padding: 4px 16px; border-radius: 40px; margin-bottom: 12px; }
+        .section-title { font-size: 2.6rem; font-weight: 700; letter-spacing: -1px; margin-bottom: 12px; }
+        .section-desc { color: #475569; font-size: 1.1rem; max-width: 640px; margin-bottom: 40px; }
+
+        /* PHILOSOPHY */
+        #philosophy { background: #ffffff; }
+        .philosophy-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+        .philosophy-card { background: #f8fafc; padding: 32px 28px; border-radius: 24px; border: 1px solid #eef2f6; transition: transform 0.2s, box-shadow 0.2s; }
+        .philosophy-card:hover { transform: translateY(-6px); box-shadow: 0 20px 30px -12px rgba(0,0,0,0.08); }
+        .philosophy-card i { font-size: 2rem; color: #2563eb; margin-bottom: 16px; }
+        .philosophy-card h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 8px; }
+        .philosophy-card p { color: #475569; font-size: 0.98rem; }
+
+        /* INSIGHT */
+        #insight { background: #f1f5f9; }
+        .insight-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+        .insight-block { background: #fff; padding: 32px 28px; border-radius: 24px; border: 1px solid #e2e8f0; }
+        .insight-block h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+        .insight-block h3 i { color: #2563eb; }
+        .insight-block ul { list-style: none; padding: 0; }
+        .insight-block ul li { padding: 8px 0; border-bottom: 1px solid #f1f5f9; display: flex; gap: 12px; color: #334155; }
+        .insight-block ul li:last-child { border-bottom: none; }
+        .insight-block ul li i { color: #2563eb; font-size: 0.9rem; margin-top: 4px; min-width: 18px; }
+        .insight-quote { margin-top: 24px; background: #f8fafc; padding: 20px 24px; border-radius: 16px; border-left: 4px solid #2563eb; font-style: italic; color: #1e293b; font-size: 1rem; }
+
+        /* PROJECT */
+        #project { background: #ffffff; }
+        .project-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; }
+        .project-card { background: #f8fafc; border-radius: 24px; padding: 28px 28px 32px; border: 1px solid #eef2f6; transition: all 0.2s; }
+        .project-card:hover { box-shadow: 0 20px 30px -12px rgba(0,0,0,0.06); }
+        .project-card .tag { display: inline-block; background: rgba(37,99,235,0.1); color: #1e40af; font-size: 0.7rem; font-weight: 600; padding: 2px 14px; border-radius: 40px; letter-spacing: 0.3px; margin-bottom: 12px; }
+        .project-card h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 8px; }
+        .project-card p { color: #475569; font-size: 0.95rem; margin-bottom: 14px; }
+        .project-card .meta { font-size: 0.85rem; color: #64748b; display: flex; flex-wrap: wrap; gap: 16px; }
+        .project-card .meta i { margin-right: 6px; color: #2563eb; }
+
+        /* JOURNEY */
+        #journey { background: #f1f5f9; }
+        .timeline { position: relative; padding-left: 40px; }
+        .timeline::before { content: ''; position: absolute; left: 12px; top: 8px; bottom: 8px; width: 2px; background: #cbd5e1; }
+        .timeline-item { position: relative; margin-bottom: 40px; padding-left: 20px; }
+        .timeline-item::before { content: ''; position: absolute; left: -30px; top: 8px; width: 14px; height: 14px; background: #2563eb; border-radius: 50%; border: 3px solid #fff; box-shadow: 0 0 0 3px #2563eb; }
+        .timeline-item .year { font-weight: 700; font-size: 1.1rem; color: #2563eb; }
+        .timeline-item .title { font-weight: 700; font-size: 1.2rem; margin: 4px 0 2px; }
+        .timeline-item .company { font-weight: 500; color: #475569; }
+        .timeline-item .desc { color: #334155; font-size: 0.95rem; max-width: 640px; margin-top: 6px; }
+
+        /* CONTACT */
+        #contact { background: #ffffff; padding: 60px 0 80px; }
+        #contact .container { text-align: center; max-width: 640px; margin: 0 auto; }
+
+        /* FOOTER */
+        footer { background: #0b1a33; color: #94a3b8; padding: 40px 0; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); }
+        footer a { color: #94a3b8; text-decoration: none; transition: color 0.2s; }
+        footer a:hover { color: #fff; }
+        .footer-social { display: flex; justify-content: center; gap: 24px; margin-bottom: 16px; font-size: 1.2rem; }
+
+        /* RESPONSIVE */
+        @media (max-width: 992px) {
+            .hero-grid { grid-template-columns: 1fr; text-align: center; }
+            .hero-content h1 { font-size: 2.6rem; }
+            .hero-bio { margin-left: auto; margin-right: auto; }
+            .hero-actions { justify-content: center; }
+            .philosophy-grid { grid-template-columns: 1fr 1fr; }
+            .insight-grid { grid-template-columns: 1fr; }
+            .project-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 640px) {
+            .nav-links { gap: 8px; font-size: 0.8rem; flex-wrap: wrap; justify-content: flex-end; }
+            .nav-links a i { display: none; }
+            .nav-cta { padding: 4px 12px; font-size: 0.75rem; }
+            .lang-switch { font-size: 0.7rem; padding: 2px 10px; margin-left: 4px; }
+            .hero { padding: 120px 0 60px; }
+            .hero-content h1 { font-size: 2.2rem; }
+            .philosophy-grid { grid-template-columns: 1fr; }
+            .section-title { font-size: 2rem; }
+            .avatar-frame { width: 160px; height: 160px; }
+            .timeline { padding-left: 24px; }
+            .timeline-item::before { left: -18px; width: 12px; height: 12px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+    <div class="container">
+        <div class="nav-logo">孟伟<span>.</span></div>
+        <ul class="nav-links">
+            <li><a href="#philosophy"><i class="fas fa-compass"></i> <span data-i18n="nav.philosophy">哲学</span></a></li>
+            <li><a href="#insight"><i class="fas fa-brain"></i> <span data-i18n="nav.insight">洞察</span></a></li>
+            <li><a href="#project"><i class="fas fa-code"></i> <span data-i18n="nav.project">项目</span></a></li>
+            <li><a href="#journey"><i class="fas fa-timeline"></i> <span data-i18n="nav.journey">历程</span></a></li>
+            <li><a href="#contact" class="nav-cta"><i class="fas fa-comment"></i> <span data-i18n="nav.digital">数字分身</span></a></li>
+            <li><span class="lang-switch" id="langToggle">EN</span></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+    <div class="container hero-grid">
+        <div class="hero-avatar">
+            <div class="avatar-frame">
+                <img src="avatar.jpg" alt="孟伟" onerror="this.src='https://ui-avatars.com/api/?name=Meng+Wei&size=200&background=2563eb&color=fff&font-size=0.5'" />
+            </div>
+            <div class="hero-tags">
+                <span data-i18n="hero.tag1">开源战略总监</span>
+                <span data-i18n="hero.tag2">LF AI & Data 前主席</span>
+                <span data-i18n="hero.tag3">COIA 秘书长</span>
+            </div>
+        </div>
+        <div class="hero-content">
+            <h1 data-i18n="hero.title">孟伟 <span>·</span> 从代码到生态</h1>
+            <div class="hero-sub" data-i18n="hero.sub">中兴通讯开源战略总监 · 产业生态构建者</div>
+            <p class="hero-bio" data-i18n="hero.bio">从嵌入式PLC到国际标准，从Linux基金会董事会主席到产业联盟创始人——我用二十余年走通了一条从“造设备”到“定标准”、从“领开源”到“创生态”的完整路径。</p>
+            <div class="hero-actions">
+                <a href="#contact" class="btn-primary"><i class="fas fa-robot"></i> <span data-i18n="hero.btn1">数字分身对话</span></a>
+                <a href="#journey" class="btn-outline"><i class="fas fa-arrow-down"></i> <span data-i18n="hero.btn2">探索历程</span></a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PHILOSOPHY -->
+<section id="philosophy">
+    <div class="container">
+        <span class="section-label" data-i18n="philosophy.label">My Philosophy</span>
+        <h2 class="section-title" data-i18n="philosophy.title">价值主张</h2>
+        <p class="section-desc" data-i18n="philosophy.desc">我相信开源是AI时代的“通用语言”，而产业生态是技术落地的“最后一公里”。</p>
+        <div class="philosophy-grid">
+            <div class="philosophy-card">
+                <i class="fas fa-globe-asia"></i>
+                <h3 data-i18n="philosophy.card1.title">开放 · 普惠</h3>
+                <p data-i18n="philosophy.card1.desc">AI不应是少数巨头的特权。通过开源与联盟，让每个行业、每个开发者都能平等地获取与使用AI能力。</p>
+            </div>
+            <div class="philosophy-card">
+                <i class="fas fa-link"></i>
+                <h3 data-i18n="philosophy.card2.title">标准 · 协同</h3>
+                <p data-i18n="philosophy.card2.desc">从IETF RFC到ITU-T Y.3172，我始终相信技术标准是产业协同的基石，是连接创新与落地的桥梁。</p>
+            </div>
+            <div class="philosophy-card">
+                <i class="fas fa-seedling"></i>
+                <h3 data-i18n="philosophy.card3.title">生态 · 长期</h3>
+                <p data-i18n="philosophy.card3.desc">从LF AI & Data的70+项目到COIA的60+成员单位，我致力于构建可持续、可信赖的全球AI开源生态。</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- INSIGHT -->
+<section id="insight">
+    <div class="container">
+        <span class="section-label" data-i18n="insight.label">Insight</span>
+        <h2 class="section-title" data-i18n="insight.title">能力与AI趋势</h2>
+        <p class="section-desc" data-i18n="insight.desc">基于二十年技术沉淀与全球开源治理经验，我对AI产业有着独特的洞察。</p>
+        <div class="insight-grid">
+            <div class="insight-block">
+                <h3><i class="fas fa-tools"></i> <span data-i18n="insight.ability.title">核心能力</span></h3>
+                <ul>
+                    <li><i class="fas fa-check-circle"></i> <span data-i18n="insight.ability.list1">全栈技术理解：从嵌入式PLC到运营商级IP网络，从AI推理到智能体框架</span></li>
+                    <li><i class="fas fa-check-circle"></i> <span data-i18n="insight.ability.list2">国际标准话语权：IETF RFC 9516、ITU-T Y.3172 / M.3384 等核心标准编制</span></li>
+                    <li><i class="fas fa-check-circle"></i> <span data-i18n="insight.ability.list3">开源生态领导力：LF AI & Data 董事会主席（2023-2024），推动成员从55到77</span></li>
+                    <li><i class="fas fa-check-circle"></i> <span data-i18n="insight.ability.list4">产业联盟构建力：COIA（50+成员）与 OAAIF（20+成员）秘书长</span></li>
+                </ul>
+            </div>
+            <div class="insight-block">
+                <h3><i class="fas fa-chart-line"></i> <span data-i18n="insight.trend.title">AI趋势理解</span></h3>
+                <ul>
+                    <li><i class="fas fa-arrow-right"></i> <span data-i18n="insight.trend.list1"><strong>开源大模型已成趋势</strong>——没有开源，行业AI落地速度将慢至少4倍。</span></li>
+                    <li><i class="fas fa-arrow-right"></i> <span data-i18n="insight.trend.list2"><strong>四大落地挑战</strong>：行业知识不足、算力不足、合规治理不足、区域发展不均衡。</span></li>
+                    <li><i class="fas fa-arrow-right"></i> <span data-i18n="insight.trend.list3"><strong>基金会模式是集中力量办大事</strong>——硬件、基础设施、软件服务商协同推进。</span></li>
+                    <li><i class="fas fa-arrow-right"></i> <span data-i18n="insight.trend.list4"><strong>智能体（Agent）是下一站</strong>——OAAIF应运而生，推动全球统一技术底座与治理框架。</span></li>
+                </ul>
+                <div class="insight-quote" data-i18n="insight.quote">“打造开放、普惠的人工智能开源新生态，是推动技术普及与产业升级的关键路径。”</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PROJECT -->
+<section id="project">
+    <div class="container">
+        <span class="section-label" data-i18n="project.label">Project</span>
+        <h2 class="section-title" data-i18n="project.title">亮点项目</h2>
+        <p class="section-desc" data-i18n="project.desc">从网络协议到AI基础设施，每一个项目都代表了一次技术与产业的跨越。</p>
+        <div class="project-grid">
+            <div class="project-card">
+                <span class="tag" data-i18n="project.card1.tag">国际标准</span>
+                <h3 data-i18n="project.card1.title">IETF RFC 9516</h3>
+                <p data-i18n="project.card1.desc">主导定义基于NSH封装的SFC主动OAM报文格式与Echo Request/Reply机制，推动服务功能链运维标准化。</p>
+                <div class="meta" data-i18n="project.card1.meta"><i class="fas fa-users"></i> 与Ericsson、华为、Cisco等合著</div>
+            </div>
+            <div class="project-card">
+                <span class="tag" data-i18n="project.card2.tag">国际标准</span>
+                <h3 data-i18n="project.card2.title">ITU-T Y.3172 &amp; M.3384</h3>
+                <p data-i18n="project.card2.desc">定义机器学习融入未来网络的架构框架（ML管道、MLFO、沙箱），以及AI增强电信运营管理的六级智能分级体系。</p>
+                <div class="meta" data-i18n="project.card2.meta"><i class="fas fa-flag"></i> ITU-T首个ML网络架构标准</div>
+            </div>
+            <div class="project-card">
+                <span class="tag" data-i18n="project.card3.tag">开源治理</span>
+                <h3 data-i18n="project.card3.title">LF AI &amp; Data 董事会主席</h3>
+                <p data-i18n="project.card3.desc">2023-2024年连任主席，推动基金会从不足10个项目发展到70+项目，开发者超10万，成员从55增至77。</p>
+                <div class="meta" data-i18n="project.card3.meta"><i class="fas fa-trophy"></i> 历史上第二位中国籍主席</div>
+            </div>
+            <div class="project-card">
+                <span class="tag" data-i18n="project.card4.tag">产业生态</span>
+                <h3 data-i18n="project.card4.title">开放智算产业联盟 (COIA)</h3>
+                <p data-i18n="project.card4.desc">2024年联合50+企事业单位发起成立，担任秘书长。以开源为抓手，推进开放、包容、普惠的AI新生态。</p>
+                <div class="meta" data-i18n="project.card4.meta"><i class="fas fa-building"></i> 字节跳动、中国移动、联通等理事单位</div>
+            </div>
+            <div class="project-card">
+                <span class="tag" data-i18n="project.card5.tag">产业生态</span>
+                <h3 data-i18n="project.card5.title">开放代理式AI基金会 (OAAIF)</h3>
+                <p data-i18n="project.card5.desc">2026年联合20+单位创立，首任秘书长。规划欧洲（日内瓦）、中国双总部及中东、东盟、北美三大区域中心。</p>
+                <div class="meta" data-i18n="project.card5.meta"><i class="fas fa-globe"></i> 聚焦智能体基础设施与全球治理框架</div>
+            </div>
+            <div class="project-card">
+                <span class="tag" data-i18n="project.card6.tag">技术导师</span>
+                <h3 data-i18n="project.card6.title">Adlik &amp; Co-Sight</h3>
+                <p data-i18n="project.card6.desc">在AI推理加速（Adlik）与AI智能体工厂（Co-Sight）开源项目中担任Mentor，指导社区贡献者与核心功能演进。</p>
+                <div class="meta" data-i18n="project.card6.meta"><i class="fas fa-graduation-cap"></i> 推动AI工程化与规模化部署</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- JOURNEY -->
+<section id="journey">
+    <div class="container">
+        <span class="section-label" data-i18n="journey.label">Journey</span>
+        <h2 class="section-title" data-i18n="journey.title">职业历程</h2>
+        <p class="section-desc" data-i18n="journey.desc">从电力自动化到全球AI开源治理，每一步都在为“技术普惠”铺路。</p>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="year">2003 – 2006</div>
+                <div class="title" data-i18n="journey.item1.title">软件开发工程师</div>
+                <div class="company" data-i18n="journey.item1.company">国家电网自动化研究院</div>
+                <div class="desc" data-i18n="journey.item1.desc">深耕嵌入式PLC研发，精通IEC101/104等电力通信规约，完成MB80可编程控制器与电力调度通信系统，实现遥信/遥测/遥控/遥调全闭环。</div>
+            </div>
+            <div class="timeline-item">
+                <div class="year">2006 – 2012</div>
+                <div class="title" data-i18n="journey.item2.title">研发经理 · 科长</div>
+                <div class="company" data-i18n="journey.item2.company">中兴通讯中心研究院</div>
+                <div class="desc" data-i18n="journey.item2.desc">主导路由器仿真平台（ROS）架构设计，将物理路由器功能完整移植至通用PC环境；担任CGN（电信级NAT）项目经理，实现NAT44/NAT64/DS-Lite全协议栈，支撑法国电信等运营商IPv6演进。</div>
+            </div>
+            <div class="timeline-item">
+                <div class="year">2012 – 至今</div>
+                <div class="title" data-i18n="journey.item3.title">开源战略总监</div>
+                <div class="company" data-i18n="journey.item3.company">中兴通讯股份有限公司</div>
+                <div class="desc" data-i18n="journey.item3.desc">全面负责标准与开源战略。在IETF、ITU等组织立项发布数十项标准，第一作者获授权专利30+件。2015年任OpenDaylight OF-CONFIG项目PTL，2019年起在Adlik/Co-Sight担任Mentor。</div>
+            </div>
+            <div class="timeline-item">
+                <div class="year">2023 – 2024</div>
+                <div class="title" data-i18n="journey.item4.title">LF AI &amp; Data 董事会主席</div>
+                <div class="company" data-i18n="journey.item4.company">Linux 基金会</div>
+                <div class="desc" data-i18n="journey.item4.desc">连续两年担任主席，协调AWS、微软、华为、英特尔等13家高级会员，推动基金会成为全球最大AI开源社区之一。</div>
+            </div>
+            <div class="timeline-item">
+                <div class="year">2024 – 至今</div>
+                <div class="title" data-i18n="journey.item5.title">开放智算产业联盟 (COIA) 秘书长</div>
+                <div class="company" data-i18n="journey.item5.company">COIA</div>
+                <div class="desc" data-i18n="journey.item5.desc">联合50+企事业单位成立联盟，以开源为抓手推进AI大模型行业落地，成员已拓展至60+家。</div>
+            </div>
+            <div class="timeline-item">
+                <div class="year">2026 – 至今</div>
+                <div class="title" data-i18n="journey.item6.title">开放代理式AI基金会 (OAAIF) 秘书长</div>
+                <div class="company" data-i18n="journey.item6.company">OAAIF</div>
+                <div class="desc" data-i18n="journey.item6.desc">联合20+单位创立基金会，布局双总部与三大区域中心，推动全球智能体技术生态共建。</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT / DIGITAL TWIN -->
+<section id="contact">
+    <div class="container">
+        <span class="section-label" data-i18n="contact.label">Digital Twin</span>
+        <h2 class="section-title" data-i18n="contact.title">与我的数字分身对话</h2>
+        <p style="color:#475569; margin-bottom:28px; font-size:1.05rem;" data-i18n="contact.desc">点击下方按钮，即可开启AI驱动的数字分身对话——基于我的公开观点与产业洞察，24小时在线。</p>
+        <a href="#" class="btn-primary" style="padding:16px 48px; font-size:1.1rem; background:#2563eb;" id="digitalTwinBtn">
+            <i class="fas fa-comment-dots"></i> <span data-i18n="contact.btn">开始对话</span>
+        </a>
+        <p style="margin-top:20px; font-size:0.85rem; color:#94a3b8;" data-i18n="contact.note"><i class="fas fa-shield-alt"></i> 数字分身基于开源大模型构建，仅供学习与交流</p>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="container">
+        <div class="footer-social">
+            <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
+        </div>
+        <p style="font-size:0.9rem; opacity:0.7;" data-i18n="footer.copyright">&copy; 2026 孟伟 · 开源战略 · 产业生态</p>
+        <p style="font-size:0.8rem; opacity:0.5; margin-top:6px;" data-i18n="footer.built">Built with <i class="fas fa-heart" style="color:#ef4444;"></i> for open source</p>
+    </div>
+</footer>
+
+<script>
+    (function() {
+        // ---------- 语言包 ----------
+        const i18n = {
+            zh: {
+                "nav.philosophy": "哲学",
+                "nav.insight": "洞察",
+                "nav.project": "项目",
+                "nav.journey": "历程",
+                "nav.digital": "数字分身",
+                "hero.tag1": "开源战略总监",
+                "hero.tag2": "LF AI & Data 前主席",
+                "hero.tag3": "COIA 秘书长",
+                "hero.title": '孟伟 <span>·</span> 从代码到生态',
+                "hero.sub": "中兴通讯开源战略总监 · 产业生态构建者",
+                "hero.bio": "从嵌入式PLC到国际标准，从Linux基金会董事会主席到产业联盟创始人——我用二十余年走通了一条从“造设备”到“定标准”、从“领开源”到“创生态”的完整路径。",
+                "hero.btn1": "数字分身对话",
+                "hero.btn2": "探索历程",
+                "philosophy.label": "My Philosophy",
+                "philosophy.title": "价值主张",
+                "philosophy.desc": "我相信开源是AI时代的“通用语言”，而产业生态是技术落地的“最后一公里”。",
+                "philosophy.card1.title": "开放 · 普惠",
+                "philosophy.card1.desc": "AI不应是少数巨头的特权。通过开源与联盟，让每个行业、每个开发者都能平等地获取与使用AI能力。",
+                "philosophy.card2.title": "标准 · 协同",
+                "philosophy.card2.desc": "从IETF RFC到ITU-T Y.3172，我始终相信技术标准是产业协同的基石，是连接创新与落地的桥梁。",
+                "philosophy.card3.title": "生态 · 长期",
+                "philosophy.card3.desc": "从LF AI & Data的70+项目到COIA的60+成员单位，我致力于构建可持续、可信赖的全球AI开源生态。",
+                "insight.label": "Insight",
+                "insight.title": "能力与AI趋势",
+                "insight.desc": "基于二十年技术沉淀与全球开源治理经验，我对AI产业有着独特的洞察。",
+                "insight.ability.title": "核心能力",
+                "insight.ability.list1": "全栈技术理解：从嵌入式PLC到运营商级IP网络，从AI推理到智能体框架",
+                "insight.ability.list2": "国际标准话语权：IETF RFC 9516、ITU-T Y.3172 / M.3384 等核心标准编制",
+                "insight.ability.list3": "开源生态领导力：LF AI & Data 董事会主席（2023-2024），推动成员从55到77",
+                "insight.ability.list4": "产业联盟构建力：COIA（50+成员）与 OAAIF（20+成员）秘书长",
+                "insight.trend.title": "AI趋势理解",
+                "insight.trend.list1": "<strong>开源大模型已成趋势</strong>——没有开源，行业AI落地速度将慢至少4倍。",
+                "insight.trend.list2": "<strong>四大落地挑战</strong>：行业知识不足、算力不足、合规治理不足、区域发展不均衡。",
+                "insight.trend.list3": "<strong>基金会模式是集中力量办大事</strong>——硬件、基础设施、软件服务商协同推进。",
+                "insight.trend.list4": "<strong>智能体（Agent）是下一站</strong>——OAAIF应运而生，推动全球统一技术底座与治理框架。",
+                "insight.quote": "“打造开放、普惠的人工智能开源新生态，是推动技术普及与产业升级的关键路径。”",
+                "project.label": "Project",
+                "project.title": "亮点项目",
+                "project.desc": "从网络协议到AI基础设施，每一个项目都代表了一次技术与产业的跨越。",
+                "project.card1.tag": "国际标准",
+                "project.card1.title": "IETF RFC 9516",
+                "project.card1.desc": "主导定义基于NSH封装的SFC主动OAM报文格式与Echo Request/Reply机制，推动服务功能链运维标准化。",
+                "project.card1.meta": '<i class="fas fa-users"></i> 与Ericsson、华为、Cisco等合著',
+                "project.card2.tag": "国际标准",
+                "project.card2.title": "ITU-T Y.3172 &amp; M.3384",
+                "project.card2.desc": "定义机器学习融入未来网络的架构框架（ML管道、MLFO、沙箱），以及AI增强电信运营管理的六级智能分级体系。",
+                "project.card2.meta": '<i class="fas fa-flag"></i> ITU-T首个ML网络架构标准',
+                "project.card3.tag": "开源治理",
+                "project.card3.title": "LF AI &amp; Data 董事会主席",
+                "project.card3.desc": "2023-2024年连任主席，推动基金会从不足10个项目发展到70+项目，开发者超10万，成员从55增至77。",
+                "project.card3.meta": '<i class="fas fa-trophy"></i> 历史上第二位中国籍主席',
+                "project.card4.tag": "产业生态",
+                "project.card4.title": "开放智算产业联盟 (COIA)",
+                "project.card4.desc": "2024年联合50+企事业单位发起成立，担任秘书长。以开源为抓手，推进开放、包容、普惠的AI新生态。",
+                "project.card4.meta": '<i class="fas fa-building"></i> 字节跳动、中国移动、联通等理事单位',
+                "project.card5.tag": "产业生态",
+                "project.card5.title": "开放代理式AI基金会 (OAAIF)",
+                "project.card5.desc": "2026年联合20+单位创立，首任秘书长。规划欧洲（日内瓦）、中国双总部及中东、东盟、北美三大区域中心。",
+                "project.card5.meta": '<i class="fas fa-globe"></i> 聚焦智能体基础设施与全球治理框架',
+                "project.card6.tag": "技术导师",
+                "project.card6.title": "Adlik &amp; Co-Sight",
+                "project.card6.desc": "在AI推理加速（Adlik）与AI智能体工厂（Co-Sight）开源项目中担任Mentor，指导社区贡献者与核心功能演进。",
+                "project.card6.meta": '<i class="fas fa-graduation-cap"></i> 推动AI工程化与规模化部署',
+                "journey.label": "Journey",
+                "journey.title": "职业历程",
+                "journey.desc": "从电力自动化到全球AI开源治理，每一步都在为“技术普惠”铺路。",
+                "journey.item1.title": "软件开发工程师",
+                "journey.item1.company": "国家电网自动化研究院",
+                "journey.item1.desc": "深耕嵌入式PLC研发，精通IEC101/104等电力通信规约，完成MB80可编程控制器与电力调度通信系统，实现遥信/遥测/遥控/遥调全闭环。",
+                "journey.item2.title": "研发经理 · 科长",
+                "journey.item2.company": "中兴通讯中心研究院",
+                "journey.item2.desc": "主导路由器仿真平台（ROS）架构设计，将物理路由器功能完整移植至通用PC环境；担任CGN（电信级NAT）项目经理，实现NAT44/NAT64/DS-Lite全协议栈，支撑法国电信等运营商IPv6演进。",
+                "journey.item3.title": "开源战略总监",
+                "journey.item3.company": "中兴通讯股份有限公司",
+                "journey.item3.desc": "全面负责标准与开源战略。在IETF、ITU等组织立项发布数十项标准，第一作者获授权专利30+件。2015年任OpenDaylight OF-CONFIG项目PTL，2019年起在Adlik/Co-Sight担任Mentor。",
+                "journey.item4.title": "LF AI &amp; Data 董事会主席",
+                "journey.item4.company": "Linux 基金会",
+                "journey.item4.desc": "连续两年担任主席，协调AWS、微软、华为、英特尔等13家高级会员，推动基金会成为全球最大AI开源社区之一。",
+                "journey.item5.title": "开放智算产业联盟 (COIA) 秘书长",
+                "journey.item5.company": "COIA",
+                "journey.item5.desc": "联合50+企事业单位成立联盟，以开源为抓手推进AI大模型行业落地，成员已拓展至60+家。",
+                "journey.item6.title": "开放代理式AI基金会 (OAAIF) 秘书长",
+                "journey.item6.company": "OAAIF",
+                "journey.item6.desc": "联合20+单位创立基金会，布局双总部与三大区域中心，推动全球智能体技术生态共建。",
+                "contact.label": "Digital Twin",
+                "contact.title": "与我的数字分身对话",
+                "contact.desc": "点击下方按钮，即可开启AI驱动的数字分身对话——基于我的公开观点与产业洞察，24小时在线。",
+                "contact.btn": "开始对话",
+                "contact.note": '<i class="fas fa-shield-alt"></i> 数字分身基于开源大模型构建，仅供学习与交流',
+                "footer.copyright": "&copy; 2026 孟伟 · 开源战略 · 产业生态",
+                "footer.built": 'Built with <i class="fas fa-heart" style="color:#ef4444;"></i> for open source'
+            },
+            en: {
+                "nav.philosophy": "Philosophy",
+                "nav.insight": "Insight",
+                "nav.project": "Projects",
+                "nav.journey": "Journey",
+                "nav.digital": "Digital Twin",
+                "hero.tag1": "Open Source Strategy Director",
+                "hero.tag2": "Ex-Chair, LF AI & Data",
+                "hero.tag3": "Sec-Gen, COIA",
+                "hero.title": 'Meng Wei <span>·</span> From Code to Ecosystem',
+                "hero.sub": "Open Source Strategy Director at ZTE · Ecosystem Builder",
+                "hero.bio": "From embedded PLCs to international standards, from the Linux Foundation board to industry alliances — I have spent over two decades building a complete path from 'making devices' to 'setting standards', from 'leading open source' to 'creating ecosystems'.",
+                "hero.btn1": "Talk to Digital Twin",
+                "hero.btn2": "Explore Journey",
+                "philosophy.label": "My Philosophy",
+                "philosophy.title": "Value Proposition",
+                "philosophy.desc": "I believe open source is the 'lingua franca' of the AI era, and industrial ecosystems are the 'last mile' for technology adoption.",
+                "philosophy.card1.title": "Open · Inclusive",
+                "philosophy.card1.desc": "AI should not be a privilege of a few giants. Through open source and alliances, every industry and every developer can access and use AI capabilities equally.",
+                "philosophy.card2.title": "Standards · Synergy",
+                "philosophy.card2.desc": "From IETF RFC to ITU-T Y.3172, I firmly believe that technical standards are the cornerstone of industrial synergy, bridging innovation and deployment.",
+                "philosophy.card3.title": "Ecosystem · Long-term",
+                "philosophy.card3.desc": "From 70+ projects at LF AI & Data to 60+ members at COIA, I am committed to building a sustainable and trustworthy global AI open source ecosystem.",
+                "insight.label": "Insight",
+                "insight.title": "Capabilities & AI Trends",
+                "insight.desc": "Based on two decades of technical depth and global open source governance experience, I have a unique perspective on the AI industry.",
+                "insight.ability.title": "Core Capabilities",
+                "insight.ability.list1": "Full-stack technical understanding: from embedded PLC to carrier-grade IP networks, from AI inference to agent frameworks",
+                "insight.ability.list2": "International standard voice: IETF RFC 9516, ITU-T Y.3172 / M.3384 core specifications",
+                "insight.ability.list3": "Open source ecosystem leadership: Chair of LF AI & Data (2023-2024), grew members from 55 to 77",
+                "insight.ability.list4": "Industry alliance builder: Sec-Gen of COIA (50+ members) and OAAIF (20+ members)",
+                "insight.trend.title": "AI Trend Understanding",
+                "insight.trend.list1": "<strong>Open source LLMs are the trend</strong> — without open source, industry AI adoption would be at least 4x slower.",
+                "insight.trend.list2": "<strong>Four major adoption challenges</strong>: lack of domain knowledge, insufficient compute, regulatory gaps, and regional imbalances.",
+                "insight.trend.list3": "<strong>Foundation model is a collective force</strong> — hardware, infrastructure, and software providers collaborate effectively.",
+                "insight.trend.list4": "<strong>Agents are the next frontier</strong> — OAAIF was born to drive a unified global technology base and governance framework.",
+                "insight.quote": "“Building an open, inclusive AI open source ecosystem is the key to driving technology adoption and industrial upgrading.”",
+                "project.label": "Project",
+                "project.title": "Highlight Projects",
+                "project.desc": "From network protocols to AI infrastructure, each project represents a leap across technology and industry.",
+                "project.card1.tag": "International Standard",
+                "project.card1.title": "IETF RFC 9516",
+                "project.card1.desc": "Led the definition of SFC active OAM message format and Echo Request/Reply mechanism based on NSH encapsulation, driving standardization of service function chain operations.",
+                "project.card1.meta": '<i class="fas fa-users"></i> Co-authored with Ericsson, Huawei, Cisco, etc.',
+                "project.card2.tag": "International Standard",
+                "project.card2.title": "ITU-T Y.3172 &amp; M.3384",
+                "project.card2.desc": "Defined the architectural framework for ML integration into future networks (ML pipeline, MLFO, sandbox) and a six-level intelligence grading system for AI-enhanced telecom operations.",
+                "project.card2.meta": '<i class="fas fa-flag"></i> ITU-T\'s first ML network architecture standard',
+                "project.card3.tag": "Open Source Governance",
+                "project.card3.title": "LF AI &amp; Data Board Chair",
+                "project.card3.desc": "Re-elected chair in 2023-2024, grew the foundation from fewer than 10 projects to 70+, with over 100k developers and members from 55 to 77.",
+                "project.card3.meta": '<i class="fas fa-trophy"></i> Second Chinese chair in history',
+                "project.card4.tag": "Industry Ecosystem",
+                "project.card4.title": "Open Computing Industry Alliance (COIA)",
+                "project.card4.desc": "Co-founded in 2024 with 50+ enterprises and institutions, serving as Secretary-General. Leveraging open source to build an open, inclusive, and inclusive AI ecosystem.",
+                "project.card4.meta": '<i class="fas fa-building"></i> Members include ByteDance, China Mobile, China Unicom, etc.',
+                "project.card5.tag": "Industry Ecosystem",
+                "project.card5.title": "Open Agentic AI Foundation (OAAIF)",
+                "project.card5.desc": "Founded in 2026 with 20+ organizations, serving as the first Secretary-General. Plans for dual headquarters (Geneva & China) and three regional centers (Middle East, ASEAN, North America).",
+                "project.card5.meta": '<i class="fas fa-globe"></i> Focus on agent infrastructure and global governance',
+                "project.card6.tag": "Technical Mentor",
+                "project.card6.title": "Adlik &amp; Co-Sight",
+                "project.card6.desc": "Served as Mentor in Adlik (AI inference acceleration) and Co-Sight (AI agent factory) open source projects, guiding community contributors and core feature evolution.",
+                "project.card6.meta": '<i class="fas fa-graduation-cap"></i> Driving AI engineering and scalable deployment',
+                "journey.label": "Journey",
+                "journey.title": "Career Journey",
+                "journey.desc": "From power automation to global AI open source governance, every step paves the way for 'tech for all'.",
+                "journey.item1.title": "Software Development Engineer",
+                "journey.item1.company": "State Grid Automation Research Institute",
+                "journey.item1.desc": "Deeply involved in embedded PLC development, proficient in IEC101/104 power communication protocols, completed MB80 programmable controller and power dispatch communication system, realizing full closed-loop of telemetry/telecontrol.",
+                "journey.item2.title": "R&D Manager · Section Chief",
+                "journey.item2.company": "ZTE Central Research Institute",
+                "journey.item2.desc": "Led the architecture design of router simulation platform (ROS), porting physical router functions to commodity PC environment; served as Project Manager for CGN (Carrier-grade NAT), implementing NAT44/NAT64/DS-Lite full protocol stack to support IPv6 evolution for operators like France Telecom.",
+                "journey.item3.title": "Open Source Strategy Director",
+                "journey.item3.company": "ZTE Corporation",
+                "journey.item3.desc": "Overall responsible for standards and open source strategy. Published dozens of standards in IETF, ITU, etc., and holds 30+ authorized patents as first author. Served as PTL of OpenDaylight OF-CONFIG in 2015, and as Mentor in Adlik/Co-Sight since 2019.",
+                "journey.item4.title": "LF AI &amp; Data Board Chair",
+                "journey.item4.company": "Linux Foundation",
+                "journey.item4.desc": "Served as Chair for two consecutive years, coordinating 13 Premier Members including AWS, Microsoft, Huawei, Intel, helping the foundation become one of the largest AI open source communities globally.",
+                "journey.item5.title": "Secretary-General, COIA",
+                "journey.item5.company": "COIA",
+                "journey.item5.desc": "Co-founded the alliance with 50+ organizations, leveraging open source to drive AI adoption across industries, with membership now exceeding 60.",
+                "journey.item6.title": "Secretary-General, OAAIF",
+                "journey.item6.company": "OAAIF",
+                "journey.item6.desc": "Founded the foundation with 20+ organizations, establishing dual headquarters and three regional centers to foster global agent technology ecosystem.",
+                "contact.label": "Digital Twin",
+                "contact.title": "Chat with My Digital Twin",
+                "contact.desc": "Click the button below to start an AI-driven conversation with my digital twin — based on my public views and industry insights, available 24/7.",
+                "contact.btn": "Start Chat",
+                "contact.note": '<i class="fas fa-shield-alt"></i> Digital twin is built on open source LLMs for learning and exchange purposes only',
+                "footer.copyright": "&copy; 2026 Meng Wei · Open Source Strategy · Industry Ecosystem",
+                "footer.built": 'Built with <i class="fas fa-heart" style="color:#ef4444;"></i> for open source'
+            }
+        };
+
+        // ---------- 核心逻辑 ----------
+        let currentLang = localStorage.getItem('lang') || 'zh'; // 默认中文
+        const toggleBtn = document.getElementById('langToggle');
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('lang', lang);
+            render();
+            toggleBtn.textContent = lang === 'zh' ? 'EN' : '中文';
+        }
+
+        function render() {
+            const elements = document.querySelectorAll('[data-i18n]');
+            elements.forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                const translation = i18n[currentLang]?.[key];
+                if (translation !== undefined) {
+                    // 如果包含HTML标签，使用innerHTML，否则使用textContent
+                    // 为了安全，我们统一使用innerHTML，但确保内容可信
+                    el.innerHTML = translation;
+                }
+            });
+        }
+
+        // 切换语言
+        toggleBtn.addEventListener('click', function() {
+            const nextLang = currentLang === 'zh' ? 'en' : 'zh';
+            setLanguage(nextLang);
+        });
+
+        // 初始化：设置默认语言按钮文字
+        setLanguage(currentLang); // 会调用render
+
+        // 数字分身按钮演示
+        document.getElementById('digitalTwinBtn')?.addEventListener('click', function(e) {
+            e.preventDefault();
+            alert(currentLang === 'zh' ? '🤖 数字分身对话功能即将上线！\n（当前为演示版本，欢迎联系真实本人交流）' : '🤖 Digital twin chat coming soon!\n(This is a demo, feel free to reach out to the real person.)');
+        });
+
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href === '#') return;
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    })();
+</script>
+
+</body>
+</html>
